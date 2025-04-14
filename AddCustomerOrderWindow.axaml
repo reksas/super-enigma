@@ -1,0 +1,124 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        x:Class="up.AddCustomerOrderWindow"
+        Title="Добавление мероприятия"
+        Width="450"
+        Height="550"
+        MinWidth="400"
+        MinHeight="500"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI">
+    
+    <Grid Background="#F5F5F5" Margin="10">
+        <Border Background="Gray"
+                CornerRadius="8"
+                Padding="25"
+                BoxShadow="0 2 10 #CCCCCC">
+            <StackPanel Spacing="15">
+                <!-- Заголовок формы -->
+                <TextBlock Text="Добавление нового мероприятия" 
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#333333"
+                           Margin="0 0 0 10"/>
+                
+                <!-- Поля формы -->
+                <Grid ColumnDefinitions="Auto,1*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+                      VerticalAlignment="Center">
+                    <TextBlock Text="Ответственный:" Grid.Row="0" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"/>
+                    <TextBox x:Name="CustomerNameTextBox" Grid.Row="0" Grid.Column="1"
+                             Padding="10,8"
+                             CornerRadius="4"
+                             BorderThickness="1"
+                             BorderBrush="#DDDDDD"/>
+                    
+                    <TextBlock Text="Название:" Grid.Row="1" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="0 10 10 0"/>
+                    <TextBox x:Name="ContactPhoneTextBox" Grid.Row="1" Grid.Column="1"
+                             Margin="0 10 0 0"
+                             Padding="10,8"
+                             CornerRadius="4"
+                             BorderThickness="1"
+                             BorderBrush="#DDDDDD"/>
+                    
+                    <TextBlock Text="Место проведения:" Grid.Row="2" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="0 10 10 0"/>
+                    <TextBox x:Name="ContactEmailTextBox" Grid.Row="2" Grid.Column="1"
+                             Margin="0 10 0 0"
+                             Padding="10,8"
+                             CornerRadius="4"
+                             BorderThickness="1"
+                             BorderBrush="#DDDDDD"/>
+                    
+                    <TextBlock Text="Статус:" Grid.Row="3" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="0 10 10 0"/>
+                    <ComboBox x:Name="StatusComboBox" Grid.Row="3" Grid.Column="1"
+                              Margin="0 10 0 0"
+                              Padding="10,8"
+                              CornerRadius="4"
+                              BorderThickness="1"
+                              BorderBrush="#DDDDDD"/>
+                    
+                    <TextBlock Text="Дата начала:" Grid.Row="4" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="0 10 10 0"/>
+                    <DatePicker x:Name="OrderDatePicker" Grid.Row="4" Grid.Column="1"
+                                Margin="0 10 0 0"
+                                Padding="10,8"
+                                CornerRadius="4"
+                                BorderThickness="1"
+                                BorderBrush="#DDDDDD"/>
+                    
+                    <TextBlock Text="Дата окончания:" Grid.Row="5" Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="0 10 10 0"/>
+                    <DatePicker x:Name="DeliveryDatePicker" Grid.Row="5" Grid.Column="1"
+                                 Margin="0 10 0 0"
+                                 Padding="10,8"
+                                 CornerRadius="4"
+                                 BorderThickness="1"
+                                 BorderBrush="#DDDDDD"/>
+                </Grid>
+                
+                <!-- Кнопки действий -->
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right"
+                            Spacing="15"
+                            Margin="0 25 0 0">
+                    <Button Content="Отмена" 
+                            Width="120"
+                            Click="OnCancelClick"
+                            Background="#F1F1F1"
+                            Foreground="#555555"
+                            Padding="15,8"
+                            CornerRadius="4"
+                            BorderThickness="1"
+                            BorderBrush="#DDDDDD"/>
+                    
+                    <Button Content="Сохранить" 
+                            Width="120"
+                            Click="OnSaveClick"
+                            Background="#28A745"
+                            Foreground="White"
+                            Padding="15,8"
+                            CornerRadius="4"
+                            FontWeight="SemiBold"/>
+                </StackPanel>
+                
+                <!-- Блок ошибок -->
+                <TextBlock x:Name="ErrorTextBlock" 
+                           Foreground="#DC3545"
+                           TextWrapping="Wrap"
+                           Margin="0 15 0 0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

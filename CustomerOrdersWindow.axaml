@@ -1,0 +1,142 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:entities="clr-namespace:upp.Entities"
+        mc:Ignorable="d"
+        x:Class="up.CustomerOrdersWindow"
+        Width="1000"
+        Height="700"
+        MinWidth="900"
+        MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Title="Заказы клиентов"
+        FontFamily="Segoe UI">
+    
+    <Grid Background="#F5F5F5">
+        <!-- Основное содержимое -->
+        <Border Background="Gray" 
+                CornerRadius="8"
+                Padding="20"
+                Margin="20"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                BoxShadow="0 5 15 #CCCCCC">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Кнопка возврата -->
+                <Button Grid.Row="0" 
+                        Content="← Вернуться" 
+                        HorizontalAlignment="Left"
+                        Click="OnBackClick"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="#2A5798"
+                        FontWeight="SemiBold"
+                        Padding="0"/>
+
+                <!-- Панель поиска -->
+                <StackPanel Grid.Row="1" 
+                            Orientation="Horizontal" 
+                            Spacing="10" 
+                            Margin="0 15">
+                    <TextBox x:Name="SearchTextBox" 
+                             Width="300"
+                             Watermark="Поиск по преподавателю"
+                             Padding="10,8"
+                             CornerRadius="4"/>
+                    
+                    <Button Content="Поиск" 
+                            Click="OnSearchClick"
+                            Background="#2A5798"
+                            Foreground="White"
+                            Padding="15,8"
+                            CornerRadius="4"/>
+                </StackPanel>
+
+                <!-- Таблица данных -->
+                <DataGrid x:Name="dataGridOrders" 
+                          Grid.Row="2"
+                          AutoGenerateColumns="False"
+                          CanUserReorderColumns="True"
+                          CanUserResizeColumns="True"
+                          CanUserSortColumns="True"
+                          IsReadOnly="True"
+                          SelectionMode="Single"
+                          BorderThickness="0"
+                          Background="Transparent"
+                          x:DataType="entities:CustomerOrder">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding OrderId}" Width="Auto"/>
+                        <DataGridTextColumn Header="Ответственный" Binding="{Binding CustomerName}" Width="*"/>
+                        <DataGridTextColumn Header="Название мероприятия" Binding="{Binding ContactPhone}" Width="*"/>
+                        <DataGridTextColumn Header="Дата начала" Binding="{Binding OrderDate, StringFormat='{}{0:dd.MM.yyyy}'}" Width="*"/>
+                        <DataGridTextColumn Header="Дата окончания" Binding="{Binding DeliveryDate, StringFormat='{}{0:dd.MM.yyyy}'}" Width="*"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*"/>
+                        <DataGridTextColumn Header="Место проведения" Binding="{Binding ContactEmail}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Панель действий внизу экрана -->
+                <Border Grid.Row="3"
+                        Background="#F8F8F8"
+                        CornerRadius="6"
+                        Padding="15"
+                        Margin="0 20 0 10">
+                    <StackPanel Orientation="Horizontal" 
+                                HorizontalAlignment="Center"
+                                Spacing="20">
+                        <Button Content="Добавить" 
+                                Click="OnAddRecordClick"
+                                Background="#2A5798"
+                                Foreground="White"
+                                Padding="25,10"
+                                CornerRadius="4"
+                                FontWeight="SemiBold"
+                                MinWidth="120"/>
+                                
+                        <Button Content="Удалить" 
+                                Click="OnDeleteRecordClick"
+                                Background="#D9534F"
+                                Foreground="White"
+                                Padding="25,10"
+                                CornerRadius="4"
+                                FontWeight="SemiBold"
+                                MinWidth="120"/>
+                                
+                        <Button Content="Обновить" 
+                                Click="OnRefreshDataClick"
+                                Background="#5BC0DE"
+                                Foreground="White"
+                                Padding="25,10"
+                                CornerRadius="4"
+                                FontWeight="SemiBold"
+                                MinWidth="120"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Статусная строка -->
+                <TextBlock Grid.Row="4" 
+                           Margin="0 15 0 0" 
+                           x:Name="StatusTextBlock"
+                           Foreground="#777777"
+                           FontSize="12"/>
+            </Grid>
+        </Border>
+
+        <!-- Подвал -->
+        <TextBlock Text="© 2025 Система управления мероприятиями. Версия Альфа-0.0.1"
+                   FontSize="11"
+                   Foreground="#777777"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+    </Grid>
+</Window>

@@ -1,0 +1,95 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        x:Class="up.MainWindow"
+        Width="400"
+        Height="500"
+        MinWidth="400"
+        MinHeight="500"
+        WindowStartupLocation="CenterScreen"
+        Title="Авторизация в системе"
+        FontFamily="Segoe UI">
+    
+    <Grid Background="#F5F5F5">
+    
+        <!-- Форма авторизации -->
+        <Border Background="White" 
+                CornerRadius="8"
+                Padding="30"
+                Width="320"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                BoxShadow="0 5 15 #CCCCCC">
+            <StackPanel Spacing="15">
+                <!-- Заголовок -->
+                <TextBlock Text="Вход в систему" 
+                           FontSize="20" 
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"/>
+                
+                <!-- Выбор роли -->
+                <ComboBox Name="RoleComboBox" 
+                          SelectedIndex="0"
+                          PlaceholderText="Выберите роль"
+                          FontSize="14"
+                          Padding="10">
+                    <ComboBoxItem>Администратор</ComboBoxItem>
+                    <ComboBoxItem>Сотрудник</ComboBoxItem>
+                </ComboBox>
+                
+                <!-- Поле логина -->
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Логин" FontSize="14" Foreground="#555555"/>
+                    <TextBox Name="LoginTextBox" 
+                             FontSize="14"
+                             Padding="10"
+                             Watermark="Введите ваш логин"
+                             BorderBrush="#DDDDDD"/>
+                </StackPanel>
+                
+                <!-- Поле пароля -->
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Пароль" FontSize="14" Foreground="#555555"/>
+                    <TextBox Name="PasswordTextBox" 
+                             FontSize="14"
+                             Padding="10"
+                             PasswordChar="•"
+                             Watermark="Введите ваш пароль"
+                             BorderBrush="#DDDDDD"/>
+                </StackPanel>
+                
+                <!-- Кнопка входа -->
+                <Button Name="LoginButton" 
+                        Content="Войти" 
+                        Click="LoginButton_Click"
+                        FontSize="14"
+                        Padding="15,10"
+                        Margin="0,20,0,0"
+                        Background="#2A5798"
+                        Foreground="White"
+                        BorderThickness="0"
+                        CornerRadius="4"/>
+                
+                <!-- Ссылка "Забыли пароль?" -->
+                <TextBlock Text="Забыли пароль?" 
+                           FontSize="12"
+                           Foreground="#2A5798"
+                           HorizontalAlignment="Center"
+                           Cursor="Hand"
+                           TextDecorations="Underline"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Подвал -->
+        <TextBlock Text="© 2025 Компания. Все права защищены."
+                   FontSize="11"
+                   Foreground="#777777"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+    </Grid>
+</Window>
